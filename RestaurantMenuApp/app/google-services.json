@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1013077143611",
+    "project_id": "restaurantmenuapp-66a54",
+    "storage_bucket": "restaurantmenuapp-66a54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013077143611:android:561872b88e4696efd7ac1e",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.mad.d3927542"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSYEoupVOv1Fh3TTCR5dZ76a05do7JXw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
