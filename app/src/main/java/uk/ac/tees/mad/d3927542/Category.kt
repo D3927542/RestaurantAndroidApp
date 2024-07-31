@@ -1,5 +1,5 @@
 package uk.ac.tees.mad.d3927542
-
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,11 +18,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @Composable
-fun Category() {
+fun Category(dataVM : DataViewModel, navHostController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -32,13 +33,25 @@ fun Category() {
     ){
         Spacer(modifier = Modifier.height(60.dp))
         Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart){
-            BackButton({  })
+            BackButton({ navHostController.navigateUp() })
         }
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = "Shop by Categories", fontWeight = FontWeight.Bold,
             fontSize = 32.sp, textAlign = TextAlign.Start, modifier = Modifier.fillMaxWidth()
         )
+        val cat = dataVM.categories.value
+        cat?.let {
+            LazyColumn(Modifier.fillMaxSize()) {
+                items(items = it){
+                    CategoryLargeItem(category = it, dataVM, navHostController) {
+                        dataVM.categoryPicked.value = it
+                        navHostController.navigate(Route.ProductPerCategory.name)
+                    }
+                }
+            }
+
+        }
 
     }
 }

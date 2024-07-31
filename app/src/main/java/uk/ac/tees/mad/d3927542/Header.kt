@@ -1,5 +1,4 @@
 package uk.ac.tees.mad.d3927542
-
 import android.media.Image
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -8,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,12 +34,12 @@ fun Header(title: String = "Restaurant Menu", logo : Int= R.drawable.baseline_re
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically){
 
-        Image(painter = painterResource(id = logo), contentDescription = "logo")
+        Icon(painter = painterResource(id = logo), contentDescription = "logo", tint = Color.Black)
 
-        Text(text = title, fontWeight = FontWeight.Bold, color = Color.White, fontSize = 18.sp)
+        Text(text = title, fontWeight = FontWeight.Bold, color = Color.Black, fontSize = 18.sp)
 
         IconButton(onClick = rightLogoOnClick) {
-            Image(painter = painterResource(id = rightlogo), contentDescription = "logo")
+            Icon(painter = painterResource(id = rightlogo), contentDescription = "logo", tint = Color.Black)
         }
 
 

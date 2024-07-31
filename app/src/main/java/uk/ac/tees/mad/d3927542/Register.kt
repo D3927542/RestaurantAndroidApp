@@ -1,5 +1,4 @@
 package uk.ac.tees.mad.d3927542
-
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -41,11 +40,14 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import uk.ac.tees.mad.d3927542.ui.theme.appBgColor
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun GetRegister() {
+fun GetRegister(navController: NavHostController,
+                authViewModel: AuthViewModel = hiltViewModel()) {
     var firstName by remember {
         mutableStateOf("")
     }
@@ -78,7 +80,7 @@ fun GetRegister() {
     ){
         Spacer(modifier = Modifier.height(16.dp))
         Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart){
-            BackButton({})
+            BackButton({navController.navigateUp()})
         }
         Spacer(modifier = Modifier.weight(0.2f))
         Text(
@@ -206,7 +208,10 @@ fun GetRegister() {
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            onClick = {},
+            onClick = {
+                authViewModel.registerUser(email, password, navController)
+
+                      },
             enabled = isFormValid,
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp)
@@ -219,7 +224,7 @@ fun GetRegister() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = "Forgot Password ?")
-            TextButton(onClick = { }) {
+            TextButton(onClick = { navController.navigate(Route.forgotPassword.name)}) {
                 Text(text = "Reset",
                     fontWeight = FontWeight.Bold,
                     color = Color.Black)
