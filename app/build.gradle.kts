@@ -48,6 +48,10 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/NOTICE.md"
+            excludes += "/META-INF/NOTICE"
+            excludes += "/META-INF/LICENSE.md"
+            excludes += "/META-INF/LICENSE"
         }
     }
 }
@@ -72,6 +76,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation("androidx.navigation:navigation-compose:2.4.0-alpha07")
+
+    implementation (libs.android.mail)
+    implementation (libs.android.activation)
 
     // Dagger-Hilt
     implementation("com.google.dagger:hilt-android:2.51")
